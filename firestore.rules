@@ -1,0 +1,20 @@
+# Firestore Security Rules
+
+## Copy these rules to your Firestore Rules tab in Firebase Console
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Products collection - readable by all authenticated users
+    match /products/{productId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only allow writes through Firebase Console or admin SDK
+    }
+    
+    // Users collection - users can only read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
