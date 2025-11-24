@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "x": "rm -rf .expo && rm -rf .expo-shared && rm -rf node_modules && rm -rf package-lock.json && npm install"
+    "x": "rm -rf .expo && rm -rf .expo-shared && rm -rf node_modules && rm -rf package-lock.json && npm install --legacy-peer-deps"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
