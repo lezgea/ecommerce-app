@@ -1,4 +1,3 @@
-// src/context/CartContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { AuthContext } from './AuthContext';
 
