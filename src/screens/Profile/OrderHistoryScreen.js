@@ -1,4 +1,3 @@
-// src/screens/Profile/OrderHistoryScreen.js
 import React, { useState, useEffect, useContext } from 'react';
 import {
     View,
@@ -20,6 +19,33 @@ const OrderHistoryScreen = () => {
     useEffect(() => {
         fetchOrders();
     }, []);
+
+    function formatDate(value) {
+        if (!value) return "Unknown date";
+
+        // Firestore Timestamp
+        if (value.toDate) {
+            return value.toDate().toLocaleDateString();
+        }
+
+        // Already a JS Date
+        if (value instanceof Date) {
+            return value.toLocaleDateString();
+        }
+
+        // Milliseconds number
+        if (typeof value === "number") {
+            return new Date(value).toLocaleDateString();
+        }
+
+        // ISO string
+        if (typeof value === "string") {
+            return new Date(value).toLocaleDateString();
+        }
+
+        return "Invalid date";
+    }
+
 
     const fetchOrders = async () => {
         try {
@@ -44,7 +70,7 @@ const OrderHistoryScreen = () => {
     const getStatusColor = (status) => {
         switch (status) {
             case 'Processing': return '#FF9500';
-            case 'Shipped': return '#007AFF';
+            case 'Shipped': return '#A277BA';
             case 'Delivered': return '#4CAF50';
             default: return '#999';
         }
@@ -60,7 +86,7 @@ const OrderHistoryScreen = () => {
             </View>
 
             <Text style={styles.orderDate}>
-                {new Date(item.createdAt).toLocaleDateString()}
+                {formatDate(item.createdAt)}
             </Text>
 
             <View style={styles.orderItems}>
@@ -81,7 +107,7 @@ const OrderHistoryScreen = () => {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#A277BA" />
             </View>
         );
     }
@@ -177,7 +203,7 @@ const styles = StyleSheet.create({
     totalAmount: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#92AB39',
     },
     emptyContainer: {
         flex: 1,

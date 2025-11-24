@@ -27,7 +27,7 @@ const ProductsStack = () => {
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#007AFF',
+                    backgroundColor: '#A277BA',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -55,7 +55,7 @@ const CartStack = () => {
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#007AFF',
+                    backgroundColor: '#A277BA',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -97,7 +97,7 @@ const ProfileStack = () => {
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#007AFF',
+                    backgroundColor: '#A277BA',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -172,7 +172,7 @@ const AppNavigator = () => {
                         </View>
                     );
                 },
-                tabBarActiveTintColor: '#007AFF',
+                tabBarActiveTintColor: '#A277BA',
                 tabBarInactiveTintColor: 'gray',
                 tabBarStyle: {
                     paddingBottom: 5,

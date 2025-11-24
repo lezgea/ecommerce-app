@@ -51,7 +51,7 @@ const HelpScreen = () => {
                     <Text style={styles.sectionTitle}>Contact Support</Text>
 
                     <TouchableOpacity style={styles.contactItem} onPress={openEmail}>
-                        <Ionicons name="mail" size={24} color="#007AFF" />
+                        <Ionicons name="mail" size={24} color="#A277BA" />
                         <View style={styles.contactText}>
                             <Text style={styles.contactLabel}>Email</Text>
                             <Text style={styles.contactValue}>support@ecommerce.com</Text>
@@ -60,7 +60,7 @@ const HelpScreen = () => {
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.contactItem} onPress={openPhone}>
-                        <Ionicons name="call" size={24} color="#007AFF" />
+                        <Ionicons name="call" size={24} color="#A277BA" />
                         <View style={styles.contactText}>
                             <Text style={styles.contactLabel}>Phone</Text>
                             <Text style={styles.contactValue}>+1 (234) 567-890</Text>

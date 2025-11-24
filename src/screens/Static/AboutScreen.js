@@ -8,7 +8,7 @@ const AboutScreen = () => {
         <ScrollView style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.iconContainer}>
-                    <Ionicons name="storefront" size={80} color="#007AFF" />
+                    <Ionicons name="storefront" size={80} color="#A277BA" />
                 </View>
 
                 <Text style={styles.appName}>E-Commerce Mobile App</Text>

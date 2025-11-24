@@ -1,4 +1,3 @@
-// src/screens/Profile/ProfileScreen.js
 import React, { useContext } from 'react';
 import {
     View,
@@ -97,11 +96,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#f5f5f5',
     },
+
     header: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         padding: 30,
         alignItems: 'center',
     },
+
     avatarContainer: {
         width: 100,
         height: 100,
@@ -121,6 +122,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'rgba(255,255,255,0.9)',
     },
+
     menuContainer: {
         backgroundColor: '#fff',
         marginTop: 20,
@@ -142,6 +144,7 @@ const styles = StyleSheet.create({
         color: '#333',
         marginLeft: 15,
     },
+
     logoutButton: {
         flexDirection: 'row',
         alignItems: 'center',

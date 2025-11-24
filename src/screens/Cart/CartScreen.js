@@ -5,87 +5,107 @@ import {
     Text,
     FlatList,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { CartContext } from '../../context/CartContext';
 
 const CartScreen = ({ navigation }) => {
-    const { cartItems, removeFromCart, updateQuantity, getCartTotal } = useContext(CartContext);
+    const { cartItems, removeFromCart, updateQuantity, getCartTotal, clearCart } = useContext(CartContext);
 
     const renderCartItem = ({ item }) => (
-        <View style={styles.cartItem}>
-            <View style={styles.imagePlaceholder}>
-                <Ionicons name="image-outline" size={40} color="#ccc" />
+        <View style={styles.card}>
+            <View style={styles.row}>
+                <Image
+                    source={{ uri: item.imageUrl }}
+                    style={styles.productImage}
+                />
+
+                <View style={styles.info}>
+                    <Text style={styles.productName}>{item.name}</Text>
+                    <Text style={styles.productPrice}>${item.price.toFixed(2)}</Text>
+                    <Text style={styles.oldPrice}>${(item.price * 1.05).toFixed(0)}</Text>
+                </View>
+
+                <TouchableOpacity onPress={() => removeFromCart(item.id)}>
+                    <Ionicons name="trash-outline" size={26} color="#ff3b30" />
+                </TouchableOpacity>
             </View>
 
-            <View style={styles.itemDetails}>
-                <Text style={styles.itemName} numberOfLines={2}>{item.name}</Text>
-                <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
-            </View>
-
-            <View style={styles.quantityContainer}>
+            <View style={styles.quantityRow}>
                 <TouchableOpacity
-                    style={styles.quantityButton}
+                    style={styles.qtyButton}
                     onPress={() => updateQuantity(item.id, item.quantity - 1)}
                 >
-                    <Ionicons name="remove" size={20} color="#007AFF" />
+                    <Ionicons name="remove" size={18} color="#A277BA" />
                 </TouchableOpacity>
 
                 <Text style={styles.quantity}>{item.quantity}</Text>
 
                 <TouchableOpacity
-                    style={styles.quantityButton}
+                    style={styles.qtyButton}
                     onPress={() => updateQuantity(item.id, item.quantity + 1)}
                 >
-                    <Ionicons name="add" size={20} color="#007AFF" />
+                    <Ionicons name="add" size={18} color="#A277BA" />
                 </TouchableOpacity>
             </View>
-
-            <TouchableOpacity
-                style={styles.removeButton}
-                onPress={() => removeFromCart(item.id)}
-            >
-                <Ionicons name="trash-outline" size={24} color="#ff3b30" />
-            </TouchableOpacity>
         </View>
     );
 
-    if (cartItems.length === 0) {
-        return (
-            <View style={styles.emptyContainer}>
-                <Ionicons name="cart-outline" size={100} color="#ccc" />
-                <Text style={styles.emptyText}>Your cart is empty</Text>
-                <TouchableOpacity
-                    style={styles.shopButton}
-                    onPress={() => navigation.navigate('Products')}
-                >
-                    <Text style={styles.shopButtonText}>Start Shopping</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-
     return (
         <View style={styles.container}>
+            {/* HEADER */}
+            <View style={styles.header}>
+                <Text style={styles.shoppingCart}>Shopping Cart</Text>
+
+                <TouchableOpacity onPress={clearCart}>
+                    <Text style={styles.clearAll}>Clear All</Text>
+                </TouchableOpacity>
+            </View>
+
+            {/* CART LIST */}
             <FlatList
                 data={cartItems}
                 renderItem={renderCartItem}
-                keyExtractor={item => item.id}
-                contentContainerStyle={styles.listContent}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={{ paddingBottom: 120 }}
             />
 
-            <View style={styles.footer}>
-                <View style={styles.totalContainer}>
-                    <Text style={styles.totalLabel}>Subtotal:</Text>
-                    <Text style={styles.totalAmount}>${getCartTotal().toFixed(2)}</Text>
+            {/* SUMMARY */}
+            <View style={styles.summary}>
+                <View style={styles.summaryRow}>
+                    <Text style={styles.summaryLabel}>Items ({cartItems.length})</Text>
+                    <Text style={styles.summaryValue}>${getCartTotal().toFixed(2)}</Text>
                 </View>
 
+                <View style={styles.summaryRow}>
+                    <Text style={styles.summaryLabel}>Shipping</Text>
+                    <Text style={styles.shippingFree}>Free</Text>
+                </View>
+
+                <View style={styles.summaryRow}>
+                    <Text style={styles.summaryLabel}>Tax</Text>
+                    <Text style={styles.summaryValue}>
+                        ${(getCartTotal() * 0.08).toFixed(2)}
+                    </Text>
+                </View>
+
+                <View style={styles.totalRow}>
+                    <Text style={styles.totalLabel}>Total</Text>
+                    <Text style={styles.totalValue}>
+                        ${(getCartTotal() * 1.08).toFixed(2)}
+                    </Text>
+                </View>
+
+                {/* CHECKOUT BUTTON */}
                 <TouchableOpacity
                     style={styles.checkoutButton}
                     onPress={() => navigation.navigate('Checkout')}
                 >
-                    <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+                    <Text style={styles.checkoutText}>
+                        Proceed to Checkout →
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -93,126 +113,141 @@ const CartScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5',
-    },
-    listContent: {
-        padding: 10,
-    },
-    cartItem: {
-        flexDirection: 'row',
-        backgroundColor: '#fff',
-        padding: 15,
-        marginBottom: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-        elevation: 2,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-    },
-    imagePlaceholder: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#f0f0f0',
-        borderRadius: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 15,
-    },
-    itemDetails: {
-        flex: 1,
-    },
-    itemName: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: '#333',
-        marginBottom: 5,
-    },
-    itemPrice: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#007AFF',
-    },
-    quantityContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginRight: 10,
-    },
-    quantityButton: {
-        width: 32,
-        height: 32,
-        borderRadius: 16,
-        backgroundColor: '#f0f0f0',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    quantity: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginHorizontal: 15,
-        minWidth: 20,
-        textAlign: 'center',
-    },
-    removeButton: {
-        padding: 5,
-    },
-    emptyContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+    container: { flex: 1, backgroundColor: '#f9f9f9' },
+
+    header: {
         padding: 20,
-    },
-    emptyText: {
-        fontSize: 18,
-        color: '#999',
-        marginTop: 20,
-        marginBottom: 30,
-    },
-    shopButton: {
-        backgroundColor: '#007AFF',
-        paddingHorizontal: 30,
-        paddingVertical: 15,
-        borderRadius: 10,
-    },
-    shopButtonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    footer: {
-        backgroundColor: '#fff',
-        padding: 20,
-        borderTopWidth: 1,
-        borderTopColor: '#eee',
-    },
-    totalContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 15,
     },
-    totalLabel: {
-        fontSize: 18,
-        color: '#666',
-    },
-    totalAmount: {
+
+    shoppingCart: {
         fontSize: 24,
-        fontWeight: 'bold',
-        color: '#333',
+        fontWeight: '700',
+        color: '#111',
     },
-    checkoutButton: {
-        backgroundColor: '#007AFF',
+
+    clearAll: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#FF3B30',
+    },
+
+    card: {
+        backgroundColor: '#FFF',
+        marginHorizontal: 15,
+        marginBottom: 15,
+        borderRadius: 12,
         padding: 15,
-        borderRadius: 10,
+        elevation: 2,
+    },
+
+    row: {
+        flexDirection: 'row',
         alignItems: 'center',
     },
-    checkoutButtonText: {
-        color: '#fff',
+
+    productImage: {
+        width: 70,
+        height: 70,
+        borderRadius: 10,
+        marginRight: 15,
+    },
+
+    info: { flex: 1 },
+
+    productName: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#111',
+        marginBottom: 5,
+    },
+
+    productPrice: {
         fontSize: 18,
-        fontWeight: 'bold',
+        fontWeight: '700',
+        color: '#92AB39',
+    },
+
+    oldPrice: {
+        color: '#999',
+        fontSize: 13,
+        marginTop: 4,
+        textDecorationLine: 'line-through',
+    },
+
+    quantityRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 12,
+        justifyContent: 'center',
+        gap: 20,
+    },
+
+    qtyButton: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFF',
+    },
+
+    quantity: {
+        fontSize: 18,
+        fontWeight: '600',
+    },
+
+    summary: {
+        backgroundColor: '#FFF',
+        padding: 20,
+        borderTopWidth: 1,
+        borderTopColor: '#eee',
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+    },
+
+    summaryRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10,
+    },
+
+    totalRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+        paddingTop: 10,
+        borderTopWidth: 1,
+        borderTopColor: '#EEE',
+    },
+
+    summaryLabel: { fontSize: 16, color: '#666' },
+
+    summaryValue: { fontSize: 16, fontWeight: '600', color: '#333' },
+
+    shippingFree: { fontSize: 16, fontWeight: '600', color: '#4CAF50' },
+
+    totalLabel: { fontSize: 20, fontWeight: '700', color: '#333' },
+
+    totalValue: { fontSize: 22, fontWeight: '700', color: '#92AB39' },
+
+    checkoutButton: {
+        marginTop: 20,
+        backgroundColor: '#A277BA',
+        paddingVertical: 15,
+        borderRadius: 12,
+        alignItems: 'center',
+    },
+
+    checkoutText: {
+        color: '#FFF',
+        fontSize: 18,
+        fontWeight: '700',
     },
 });
 

@@ -1,4 +1,3 @@
-// src/screens/Products/ProductDetailScreen.js
 import React, { useContext } from 'react';
 import {
     View,
@@ -55,7 +54,7 @@ const ProductDetailScreen = ({ route, navigation }) => {
                             <Text style={styles.sectionTitle}>Features</Text>
                             {product.features.map((feature, index) => (
                                 <View key={index} style={styles.featureItem}>
-                                    <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                                    <Ionicons name="checkmark-circle" size={20} color="#92AB39" />
                                     <Text style={styles.featureText}>{feature}</Text>
                                 </View>
                             ))}
@@ -109,12 +108,14 @@ const styles = StyleSheet.create({
         color: '#333',
         marginBottom: 10,
     },
+
     price: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#92AB39',
         marginBottom: 15,
     },
+
     divider: {
         height: 1,
         backgroundColor: '#eee',
@@ -142,14 +143,16 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         flex: 1,
     },
+
     footer: {
         padding: 20,
         backgroundColor: '#fff',
         borderTopWidth: 1,
         borderTopColor: '#eee',
     },
+
     addToCartButton: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

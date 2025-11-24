@@ -1,4 +1,3 @@
-// src/screens/Products/ProductListScreen.js
 import React, { useState, useEffect } from 'react';
 import {
     View,
@@ -99,7 +98,7 @@ const ProductListScreen = ({ navigation }) => {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#A277BA" />
                 <Text style={styles.loadingText}>Loading products...</Text>
             </View>
         );
@@ -107,9 +106,7 @@ const ProductListScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            {/* Header */}
             <View style={styles.header}>
-                {/* <Text style={styles.headerTitle}>Discover</Text> */}
                 <Text style={styles.headerSubtitle}>Find your perfect product</Text>
             </View>
 
@@ -192,15 +189,11 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         backgroundColor: '#fff',
     },
-    headerTitle: {
-        fontSize: 26,
-        fontWeight: 'bold',
-        color: '#333',
-    },
     headerSubtitle: {
         fontSize: 16,
         color: '#666',
     },
+
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -212,6 +205,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#666',
     },
+
     searchContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -223,19 +217,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         height: 50,
         elevation: 2,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
     },
-    searchIcon: {
-        marginRight: 10,
-    },
+    searchIcon: { marginRight: 10 },
     searchInput: {
         flex: 1,
         fontSize: 16,
         color: '#333',
     },
+
     categoryContainer: {
         flexDirection: 'row',
         paddingHorizontal: 10,
@@ -250,10 +239,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ddd',
     },
+
     categoryChipActive: {
-        backgroundColor: '#007AFF',
-        borderColor: '#007AFF',
+        backgroundColor: '#A277BA',
+        borderColor: '#A277BA',
     },
+
     categoryText: {
         color: '#666',
         fontSize: 14,
@@ -263,19 +254,19 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
     },
-    resultsContainer: {
-        paddingHorizontal: 15,
-        paddingBottom: 5,
-    },
+
+    resultsContainer: { paddingHorizontal: 15, paddingBottom: 5 },
     resultsText: {
         fontSize: 14,
         color: '#666',
         fontWeight: '500',
     },
+
     productList: {
         padding: 5,
         paddingBottom: 20,
     },
+
     productCard: {
         flex: 1,
         maxWidth: '48%',
@@ -283,11 +274,8 @@ const styles = StyleSheet.create({
         margin: 5,
         borderRadius: 10,
         elevation: 2,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
     },
+
     imageContainer: {
         position: 'relative',
         width: '100%',
@@ -300,6 +288,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 10,
         backgroundColor: '#f0f0f0',
     },
+
     imagePlaceholder: {
         width: '100%',
         height: '100%',
@@ -309,11 +298,12 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
     },
+
     categoryBadge: {
         position: 'absolute',
         top: 8,
         right: 8,
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backgroundColor: 'rgba(0,0,0,0.6)',
         paddingHorizontal: 8,
         paddingVertical: 4,
         borderRadius: 8,
@@ -323,52 +313,20 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: '600',
     },
-    productInfo: {
-        padding: 10,
-    },
+
+    productInfo: { padding: 10 },
+
     productName: {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#333',
-        // marginBottom: 8,
         minHeight: 40,
     },
-    priceContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
+
     productPrice: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007AFF',
-    },
-    addButton: {
-        width: 28,
-        height: 28,
-        borderRadius: 14,
-        backgroundColor: '#f0f0f0',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    emptyContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 60,
-        paddingHorizontal: 40,
-    },
-    emptyTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#333',
-        marginTop: 20,
-        marginBottom: 8,
-    },
-    emptyText: {
-        fontSize: 14,
-        color: '#999',
-        textAlign: 'center',
+        color: '#92AB39',
     },
 });
 

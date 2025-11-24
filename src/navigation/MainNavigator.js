@@ -20,7 +20,7 @@ const MainNavigator = () => {
     if (!authContext || !isReady) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' }}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#A277BA" />
             </View>
         );
     }
@@ -30,7 +30,7 @@ const MainNavigator = () => {
     if (loading === true) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' }}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#A277BA" />
             </View>
         );
     }

@@ -92,7 +92,7 @@ const CheckoutScreen = ({ navigation }) => {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#A277BA" />
             </View>
         );
     }
@@ -113,7 +113,7 @@ const CheckoutScreen = ({ navigation }) => {
                         style={styles.addAddressButton}
                         onPress={() => navigation.navigate('AddressManagement')}
                     >
-                        <Ionicons name="add-circle-outline" size={24} color="#007AFF" />
+                        <Ionicons name="add-circle-outline" size={24} color="#A277BA" />
                         <Text style={styles.addAddressText}>Add Delivery Address</Text>
                     </TouchableOpacity>
                 ) : (
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
         color: '#333',
     },
     changeButton: {
-        color: '#007AFF',
+        color: '#A277BA',
         fontSize: 16,
     },
     addAddressButton: {
@@ -234,13 +234,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 15,
         borderWidth: 2,
-        borderColor: '#007AFF',
+        borderColor: '#A277BA',
         borderStyle: 'dashed',
         borderRadius: 10,
         justifyContent: 'center',
     },
     addAddressText: {
-        color: '#007AFF',
+        color: '#A277BA',
         fontSize: 16,
         marginLeft: 10,
         fontWeight: '600',
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     selectedCard: {
-        borderColor: '#007AFF',
+        borderColor: '#A277BA',
         borderWidth: 2,
         backgroundColor: '#f0f8ff',
     },
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
         height: 24,
         borderRadius: 12,
         borderWidth: 2,
-        borderColor: '#007AFF',
+        borderColor: '#A277BA',
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 15,
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
         width: 12,
         height: 12,
         borderRadius: 6,
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
     },
     addressDetails: {
         flex: 1,
@@ -334,10 +334,10 @@ const styles = StyleSheet.create({
     totalValue: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#92AB39',
     },
     placeOrderButton: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#92AB39',
         padding: 18,
         margin: 20,
         borderRadius: 10,

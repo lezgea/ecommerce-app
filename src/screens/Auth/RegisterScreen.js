@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
     },
     button: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         padding: 15,
         borderRadius: 8,
         alignItems: 'center',
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     linkTextBold: {
-        color: '#007AFF',
+        color: '#A277BA',
         fontWeight: 'bold',
     },
 });

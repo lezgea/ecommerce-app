@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     button: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         padding: 18,
         borderRadius: 10,
         alignItems: 'center',
@@ -121,10 +121,10 @@ const styles = StyleSheet.create({
     secondaryButton: {
         backgroundColor: 'transparent',
         borderWidth: 2,
-        borderColor: '#007AFF',
+        borderColor: '#A277BA',
     },
     secondaryButtonText: {
-        color: '#007AFF',
+        color: '#A277BA',
     },
 });
 

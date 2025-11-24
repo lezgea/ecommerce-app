@@ -134,7 +134,7 @@ const AddressManagementScreen = () => {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#A277BA" />
             </View>
         );
     }
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
         marginBottom: 3,
     },
     defaultBadge: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         paddingHorizontal: 10,
         paddingVertical: 5,
         borderRadius: 5,
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
         bottom: 20,
         left: 20,
         right: 20,
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     saveButton: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#A277BA',
         padding: 18,
         borderRadius: 10,
         alignItems: 'center',
