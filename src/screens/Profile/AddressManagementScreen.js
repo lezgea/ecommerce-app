@@ -207,7 +207,7 @@ const AddressManagementScreen = () => {
 
                         <TextInput
                             style={styles.input}
-                            placeholder="State"
+                            placeholder="Province/State"
                             value={formData.state}
                             onChangeText={(text) => setFormData({ ...formData, state: text })}
                         />

@@ -81,6 +81,7 @@ const RegisterScreen = ({ navigation }) => {
                         value={email}
                         onChangeText={setEmail}
                         autoCapitalize="none"
+                        autoCorrect={false}
                         keyboardType="email-address"
                     />
 
@@ -89,7 +90,11 @@ const RegisterScreen = ({ navigation }) => {
                         placeholder="Password (min 6 characters)"
                         value={password}
                         onChangeText={setPassword}
-                        secureTextEntry
+                        secureTextEntry={true}
+                        autoComplete="off"
+                        textContentType="oneTimeCode"
+                        autoCorrect={false}
+                        autoCapitalize="none"
                     />
 
                     <TextInput
@@ -97,7 +102,11 @@ const RegisterScreen = ({ navigation }) => {
                         placeholder="Confirm Password"
                         value={confirmPassword}
                         onChangeText={setConfirmPassword}
-                        secureTextEntry
+                        secureTextEntry={true}
+                        autoComplete="off"
+                        textContentType="oneTimeCode"
+                        autoCorrect={false}
+                        autoCapitalize="none"
                     />
 
                     <TouchableOpacity
