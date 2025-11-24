@@ -1,4 +1,3 @@
-// src/screens/Cart/CheckoutScreen.js
 import React, { useState, useContext, useEffect } from 'react';
 import {
     View,
@@ -337,7 +336,7 @@ const styles = StyleSheet.create({
         color: '#92AB39',
     },
     placeOrderButton: {
-        backgroundColor: '#92AB39',
+        backgroundColor: '#A277BA',
         padding: 18,
         margin: 20,
         borderRadius: 10,

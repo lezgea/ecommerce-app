@@ -1,4 +1,3 @@
-// src/screens/Profile/AddressManagementScreen.js
 import React, { useState, useEffect, useContext } from 'react';
 import {
     View,
