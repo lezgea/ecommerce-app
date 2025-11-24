@@ -91,7 +91,7 @@ const ProductListScreen = ({ navigation }) => {
             </View>
             <View style={styles.productInfo}>
                 <Text style={styles.productName} numberOfLines={2}>{item.name}</Text>
-                <Text style={styles.productPrice}>${item.price.toFixed(2)}</Text>
+                <Text style={styles.productPrice}>${item.price?.toFixed(2)}</Text>
             </View>
         </TouchableOpacity>
     );
