@@ -6,7 +6,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     ScrollView,
-    Alert
+    Alert,
+    Image
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { CartContext } from '../../context/CartContext';
@@ -26,9 +27,17 @@ const ProductDetailScreen = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <ScrollView style={styles.content}>
-                <View style={styles.imagePlaceholder}>
-                    <Ionicons name="image-outline" size={100} color="#ccc" />
-                </View>
+                {product.imageUrl ? (
+                    <Image
+                        source={{ uri: product.imageUrl }}
+                        style={styles.productImage}
+                        resizeMode="cover"
+                    />
+                ) : (
+                    <View style={styles.imagePlaceholder}>
+                        <Ionicons name="image-outline" size={100} color="#ccc" />
+                    </View>
+                )}
 
                 <View style={styles.detailsContainer}>
                     <Text style={styles.category}>{product.category}</Text>
@@ -75,10 +84,15 @@ const styles = StyleSheet.create({
     },
     imagePlaceholder: {
         width: '100%',
-        height: 300,
+        height: 400,
         backgroundColor: '#f0f0f0',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    productImage: {
+        width: '100%',
+        height: 400,
+        backgroundColor: '#f0f0f0',
     },
     detailsContainer: {
         padding: 20,
